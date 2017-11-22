@@ -3,7 +3,7 @@
 ## System requirements
 
     Node installed v6.0.0+ 
-    config.json <Sent in private>
+    config.json
 
 ## Install
 

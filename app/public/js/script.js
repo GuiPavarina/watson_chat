@@ -3,7 +3,7 @@ $(document).ready(function () {
     var socket = io(window.location.origin);
     
     $('#message').keyup(function(e){
-        var value = $(this).val();
+        var value = $('#message').val();
         if(e.keyCode == 13 && value.length > 0)
         {
             $('#send_message').click();
@@ -11,15 +11,19 @@ $(document).ready(function () {
     });
 
     $('#send_message').click(function(){
-        socket.emit(
-            'msgToServer',
-            {
-                nickname : $('#nickname').val(),
-                message: $('#message').val()
-            }
-        );
-
-        $('#message').val("");
+        var value = $('#message').val();
+        if(value.length > 0)
+        {
+            socket.emit(
+                'msgToServer',
+                {
+                    nickname : $('#nickname').val(),
+                    message: $('#message').val()
+                }
+            );
+    
+            $('#message').val("");
+        } 
     });
 
     socket.on('msgToClient', function(data){
