@@ -16,10 +16,12 @@ module.exports.startSocket = (server) => {
     /* creating connection for websocket*/
     io.on('connection', function(socket){
         
+        sendMessage('oi');
+
         socket.on('msgToServer',function(data){
             
             socket.emit('msgToClient',{
-                class: "col-md-offset-2 col-md-10",
+                class: "col-xs-offset-2 col-xs-10 col-md-offset-2 col-md-10 user",
                 nickname: data.nickname, 
                 message: data.message
             })
@@ -34,8 +36,10 @@ module.exports.startSocket = (server) => {
             },  function(err, response) {
             if (err)
                 console.log('error:', err);
-            else
-                applyMessage(response.output.text[0]);
+            else{
+                let msg = response.output.text[0];
+                applyMessage((msg ? msg : " We sorry about it, but we got no answer "));
+            }
             });
         }
 
@@ -43,7 +47,7 @@ module.exports.startSocket = (server) => {
             socket.emit(
                 'msgToClient',
                 {
-                    class: "col-md-10",
+                    class: "col-xs-10 col-md-10 robot",
                     nickname: 'Watson', 
                     message: message}
                 );
