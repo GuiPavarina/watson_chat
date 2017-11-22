@@ -1,13 +1,22 @@
 # Watson Chat
 
+## System requirements
+
+    Node installed v6.0.0+ 
+    config.json <Sent in private>
+
 ## Install
 
-npm install
+    npm install
 
 ## Start App
 
-node app.js
+    node app.js
+
+    or
+
+    nodemon app.js 
 
 ## Link
 
-Application will be available here: http://localhost:5000/
+    Application will be available here: http://localhost:5000/
