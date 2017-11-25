@@ -9,6 +9,7 @@
 		<script src="js/jquery-3.2.1.min.js"></script>
 		<!-- bootstrap -->
 		<link rel="stylesheet" href="css/bootstrap.min.css">
+		<!-- Font Awesome -->
 		<link href="css/font-awesome.min.css" rel="stylesheet">
 		<!-- style -->
 		<link href="css/style.css" rel="stylesheet">
@@ -24,29 +25,32 @@
 				</div>
 			</div>
 		</nav>
-	
-		<div class="container">
-            <div class="row talk" id="talk">
-				<div class="col-xs-12" id="dialog"></div>       
-            </div>
-        </div>
 		
-		<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
-			<div class="container">
-				<div class="panel-body message-field">
+		<div class="container">
 
-					<div class="col-md-12">
-						<div class="input-group">
-							<input type="text" class="form-control" placeholder="Type your message here" id="message">
-							<input type="hidden" value="<%=formData.nickname%>" id="nickname">
-							<span class="input-group-btn">
-								<button class="btn btn-default" type="button" id="send_message"><i class="fa fa-send-o"></i></button>
-							</span>
+			<div class="chat">			  
+			  <div class="chat-history">
+					<ul id="dialog"></ul>	
+			  </div>  
+			</div> 
+			
+			<nav class="navbar navbar-default navbar-fixed-bottom" role="navigation">
+				<div class="container">
+					<div class="panel-body message-field">
+						<div class="col-md-12">
+							<div class="input-group">
+								<input type="text" class="form-control" placeholder="Type your message here" id="message">
+								<input type="hidden" value="<%=formData.nickname%>" id="nickname">
+								<span class="input-group-btn">
+									<button class="btn btn-default" type="button" id="send_message"><i class="fa fa-send-o"></i></button>
+								</span>
+							</div>
 						</div>
 					</div>
 				</div>
-			</div>
-		</nav>		
+			</nav>
+
+		</div> 
 		
 		<script src="js/bootstrap.min.js"></script>
 		<script src="/socket.io/socket.io.js"></script>

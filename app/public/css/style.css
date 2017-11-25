@@ -1,6 +1,6 @@
 body {
-    background-color: rgb(146, 142, 142);
-/*    background: url('../images/login-bg.jpg');  */
+    background-color: #F2F5F8;
+    padding: 40px 0;    
 }
 
 .form-signin input[type="text"] {
@@ -59,25 +59,98 @@ img {
 	margin-bottom: 70px;
 }
 
-.dialog{
-	height:auto;
-    margin-bottom:15px;    
+ul{
+    padding: 0;
+    list-style-type: none;
 }
 
-.user{
-    background:rgb(226, 232, 235);
+.chat {
+  /* width: 100%; */
+  color: #434651;
 }
 
-.robot{
-    background:rgb(109, 174, 226);
+.chat .chat-history {
+  padding: 30px 30px 20px;
 }
 
-.dialog h4{
-	font-size:15px;
-	font-weight: bold;
+.chat .chat-history .message-data {
+  margin-bottom: 15px;
 }
 
-.dialog p{
-	font-size:12px;
-	padding-left:15px;
+.chat .chat-history .message-data-time {
+  color: #a8aab1;
+  padding-left: 6px;
+}
+
+.chat .chat-history .message {
+  color: white;
+  padding: 10px 25px;
+  line-height: 26px;
+  font-size: 16px;
+  border-radius: 7px;
+  margin-bottom: 15px;
+  min-width: 10%;
+  position: relative;
+}
+.chat .chat-history .message:after {
+  bottom: 100%;
+  left: 7%;
+  border: solid transparent;
+  content: " ";
+  height: 0;
+  width: 0; 
+  position: absolute;
+  pointer-events: none;
+  border-bottom-color: #94C2ED;
+  border-width: 10px;
+  margin-left: -10px;
+}
+.chat .chat-history .my-message {
+  background: #94C2ED;
+  max-width: 75%;
+}
+.chat .chat-history .other-message {
+  background: #86BB71;
+  max-width: 75%;
+}
+.chat .chat-history .other-message:after {
+  border-bottom-color: #86BB71;
+  left: 75%;
+}
+.chat .chat-message {
+  padding: 30px;
+}
+
+.online, .me {
+  margin-right: 3px;
+  font-size: 10px;
+}
+
+.online {
+  color: #94C2ED;
+}
+
+.me {
+  color: #86BB71;
+}
+
+.align-right {
+  text-align: right;
+}
+
+.float-right {
+  float: right;
+}
+
+.float-left {
+    float: left;
+  }
+
+.clearfix:after {
+  visibility: hidden;
+  display: block;
+  font-size: 0;
+  content: " ";
+  clear: both;
+  height: 0;
 }
