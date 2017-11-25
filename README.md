@@ -3,7 +3,7 @@
 ## System requirements
 
     Node installed v6.0.0+ 
-    config.json
+    config.json ( private )
 
 ## Install
 
@@ -11,9 +11,7 @@
 
 ## Configuration ( IMPORTANT )
 
-    Please, check the app.js before running,
-    To run localy, use the config.json,
-    process.env is used only for heroku.
+    Do NOT forget to copy config.json to / folder of this project. ( Same path as app.js , package.json ...)
 
 ## Start App
 
