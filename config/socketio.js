@@ -21,7 +21,6 @@ module.exports.startSocket = (server) => {
         socket.on('msgToServer',function(data){
             
             socket.emit('msgToClient',{
-                class: "col-xs-offset-2 col-xs-10 col-md-offset-2 col-md-10 user",
                 nickname: data.nickname, 
                 message: data.message
             })
@@ -47,10 +46,10 @@ module.exports.startSocket = (server) => {
             socket.emit(
                 'msgToClient',
                 {
-                    class: "col-xs-10 col-md-10 robot",
                     nickname: 'Watson', 
-                    message: message}
-                );
+                    message: message
+                }
+            );
         }
     });
 }
