@@ -7,7 +7,8 @@ module.exports.startSocket = (server) => {
     const watson = require('watson-developer-cloud');
 
     // getting configs
-    const config = require('../config.json');
+    // const config = require('../config.json');
+    const config = process.env;
     
     // starting watson
     const conversation = watson.conversation({
