@@ -1,14 +1,10 @@
-module.exports.startSocket = (server) => { 
+module.exports.startSocket = (server,config) => { 
 
     // starting server
     const io = require('socket.io').listen(server)
 
     // watson
     const watson = require('watson-developer-cloud');
-
-    // getting configs
-    // const config = require('../config.json');
-    const config = process.env;
     
     // starting watson
     const conversation = watson.conversation({

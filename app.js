@@ -9,6 +9,22 @@ const server = app.listen(port, () => {
 
 const io = require('./config/socketio');
 
-io.startSocket(server);
+/* 
+* BE AWARE HERE
+* IF YOU ARE RUNNING LOCALY, PLEASE COMMENT THE LINE BELOW WITH PROCESS.ENV AND USE THE CONFIG.JSON
+* process.env is used only for deploy
+*/
+// const config = process.env;
+//const config = require('./config.json');
+
+let config;
+
+if(process.env.workspace_id){
+	config = process.env;
+} else {
+	config = require('./config.json');
+}
+
+io.startSocket(server,config);
 
 app.set('io',io);
