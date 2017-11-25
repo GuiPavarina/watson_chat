@@ -1,22 +1,28 @@
 $(document).ready(function () {
 
+    // Getting actual URL, useful to deploy
     var socket = io(window.location.origin);
     
+    // Check if the user press Enter
     $('#message').keyup(function(e){
-        var value = $('#message').val();
         if(e.keyCode == 13)
         {
             $('#send_message').click();
         }
     });
 
+    // Button to send message
     $('#send_message').click(function(){
+        // Getting value from input
         var value = $('#message').val();
         
+        //replacing all spaces to valid if the user only type spaces
         let valid = value.replace(/\s/g, ''); 
         
+        //if the user pressed only spaces
         if(valid.length > 0)
         {
+            // Sending to server message from user
             socket.emit(
                 'msgToServer',
                 {
@@ -24,17 +30,24 @@ $(document).ready(function () {
                     message: value
                 }
             );
+            
+            // Clear input after send
             $('#message').val("");
         } 
+
+        //if the input is not valid, nothing will happen;
     });
 
+    // Send the message to the ui
     socket.on('msgToClient', function(data){
         
         var html = '';
 
+        // getting new date
         var date = new Date();
         timeStr = date.toLocaleString();
         
+        // There are two types of messages, from user and the other from bot.
         if(data.nickname === 'Watson'){
             html += '<li class="clearfix">';
                 html += '<div class="message-data">'
@@ -56,8 +69,11 @@ $(document).ready(function () {
                 html += '</div>'
             html += '</li>'
         }
+
+        // appending to dialog div
         $('#dialog').append(html);
 
+        // scroll down the screen everytime the UI receive a new massge
         window.scrollTo(0,document.body.scrollHeight);
     });
 

@@ -3,6 +3,7 @@ module.exports.chat = (req, res) => {
 	let formData = req.body;
 	let value = '';
 
+	// Testing if user only typed spaces
 	if(req.body.nickname){
 		value = req.body.nickname;
 		value = value.replace(/\s/g, '');
@@ -11,6 +12,7 @@ module.exports.chat = (req, res) => {
 			req.body.nickname = value;
 	}
 
+	// user name validations
 	req.assert('nickname','Nickname must not be empty').notEmpty();
 	req.assert('nickname','Nickname must have between 3 and 15 characters').len(3,15);
 
