@@ -44,12 +44,13 @@ module.exports.startSocket = (server,config) => {
                 }
                 else{
                     let msg = response.output.text[0];
-
-                    while(msg.includes('clique aqui')){
-                        msg = msg.replace('clique aqui','');
-                    }
                     
                     if(msg){
+
+                        while(msg.includes('clique aqui')){
+                            msg = msg.replace('clique aqui','');
+                        }
+
                         while(msg.includes(' http://')){
                             let startLink = msg.indexOf(' http://');
                             let endLink;
