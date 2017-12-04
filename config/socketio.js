@@ -44,6 +44,10 @@ module.exports.startSocket = (server,config) => {
                 }
                 else{
                     let msg = response.output.text[0];
+
+                    while(msg.includes('clique aqui')){
+                        msg = msg.replace('clique aqui','');
+                    }
                     
                     if(msg){
                         while(msg.includes(' http://')){
@@ -61,7 +65,7 @@ module.exports.startSocket = (server,config) => {
                                 }
                             }
                             let link = msg.substring(startLink+1,endLink);
-                            msg = msg.replace(' ' + link, ' <a href="' + link + '">' + link + '</a>');                        
+                            msg = msg.replace(' ' + link, ' <a href="' + link + '"> clique aqui para acessar o link </a>');                        
                         }
                     }
                     // Default message defined
