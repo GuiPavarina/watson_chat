@@ -1,10 +1,10 @@
-$(document).ready(function () {
+$(document).ready( () => {
 
     // Getting actual URL, useful to deploy
     var socket = io(window.location.origin);
     
     // Check if the user press Enter
-    $('#message').keyup(function(e){
+    $('#message').keyup((e) => {
         if(e.keyCode == 13)
         {
             $('#send_message').click();
@@ -12,9 +12,9 @@ $(document).ready(function () {
     });
 
     // Button to send message
-    $('#send_message').click(function(){
+    $('#send_message').click(() => {
         // Getting value from input
-        var value = $('#message').val();
+        let value = $('#message').val();
         
         //replacing all spaces to valid if the user only type spaces
         let valid = value.replace(/\s/g, ''); 
@@ -39,7 +39,7 @@ $(document).ready(function () {
     });
 
     // Send the message to the ui
-    socket.on('msgToClient', function(data){
+    socket.on('msgToClient', (data) => {
         
         var html = '';
 
@@ -73,7 +73,7 @@ $(document).ready(function () {
         // appending to dialog div
         $('#dialog').append(html);
 
-        // scroll down the screen everytime the UI receive a new massge
+        // scroll down the screen everytime the UI receive a new message
         window.scrollTo(0,document.body.scrollHeight);
     });
 

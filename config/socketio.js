@@ -15,12 +15,12 @@ module.exports.startSocket = (server,config) => {
     });
 
     /* creating connection for websocket*/
-    io.on('connection', function(socket){
+    io.on('connection', (socket) => {
         
         // Send the first massage, when the user connect he will see a message from bot.
         sendMessage('oi');
 
-        socket.on('msgToServer',function(data){
+        socket.on('msgToServer',(data) => {
             
             // writing in UI the message from User
             socket.emit('msgToClient',{
@@ -30,25 +30,43 @@ module.exports.startSocket = (server,config) => {
 
             // Sending massage to Watson
             sendMessage(data.message);
-
         });
 
         // Function used to get response from watson
         function sendMessage(message){  
             conversation.message({
-            workspace_id: config.workspace_id,
-            input: {'text': message}
-            },  function(err, response) {
-            if (err){
-                console.log('error:', err);
-                applyMessage("Oh no, something wrong happened");
-            }
-            else{
-                let msg = response.output.text[0];
-                
-                // Default message defined
-                applyMessage((msg ? msg : " We sorry about it, but we got no answer "));
-            }
+                    workspace_id: config.workspace_id,
+                    input: {'text': message}
+                },  (err, response) => {
+                if (err){
+                    console.log('error:', err);
+                    applyMessage("Oh no, something wrong happened");
+                }
+                else{
+                    let msg = response.output.text[0];
+                    
+                    if(msg){
+                        while(msg.includes(' http://')){
+                            let startLink = msg.indexOf(' http://');
+                            let endLink;
+                            for( let index = startLink+1 ; index < msg.length; index++ ){
+                                if(msg.charAt(index) == (' ')){
+                                    endLink = index;
+                                    break;
+                                } else if ( index + 1 == msg.length){
+                                    endLink = msg.length;
+                                    if(msg.charAt(endLink-1) == ('.'))
+                                        endLink = endLink -1;
+                                    break;
+                                }
+                            }
+                            let link = msg.substring(startLink+1,endLink);
+                            msg = msg.replace(' ' + link, ' <a href="' + link + '">' + link + '</a>');                        
+                        }
+                    }
+                    // Default message defined
+                    applyMessage( msg || " We sorry about it, but we got no answer " );
+                }
             });
         }
 
