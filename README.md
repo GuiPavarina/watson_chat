@@ -2,7 +2,7 @@
 
 ## System requirements
 
-    Node installed v6.0.0+ 
+    Node v6.0.0+ installed 
     config.json
 
 ## Install
@@ -12,7 +12,7 @@
 ## Configuration ( IMPORTANT )
 
     Do NOT forget to copy config.json to / folder of this project. ( Same path as app.js , package.json ...).
-    Instructions to create on below.
+    Instructions to create below.
 
 ## Create Config.json
 
