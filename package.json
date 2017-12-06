@@ -1,7 +1,7 @@
 {
   "name": "watson_chat",
   "version": "1.0.0",
-  "description": "",
+  "description": "Interface to Watson",
   "main": "app.js",
   "scripts": {
     "start":"node app.js"

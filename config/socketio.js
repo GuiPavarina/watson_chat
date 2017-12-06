@@ -45,6 +45,7 @@ module.exports.startSocket = (server,config) => {
                 else{
                     let msg = response.output.text[0];
                     
+                    // formating links
                     if(msg){
 
                         while(msg.includes('clique aqui')){
